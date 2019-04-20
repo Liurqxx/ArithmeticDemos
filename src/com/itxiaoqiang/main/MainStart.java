@@ -1,7 +1,7 @@
 package com.itxiaoqiang.main;
 
 import com.itxiaoqiang.arithmetic.CommonDivisor;
-import com.itxiaoqiang.arithmetic.FibonacciSequence;
+import com.itxiaoqiang.arithmetic.CommonMultiple;
 import com.itxiaoqiang.arithmetic.RndColor;
 import com.itxiaoqiang.arithmetic.HanoiTower;
 
@@ -11,6 +11,7 @@ public class MainStart {
 
 		/**
 		 * 汉诺塔移动
+		 * 
 		 */
 		// long hanoi = HanoiTower.hanoi(2, 'A', 'B', 'C');
 		// System.out.println("移动次数：" + hanoi);
@@ -31,9 +32,16 @@ public class MainStart {
 		// System.out.println(num2);
 
 		/**
-		 * 斐波那契数列
+		 * 最小公倍数
 		 */
-		FibonacciSequence.getSequence(1000L);
+//		int multiple = CommonMultiple.getMultiple(35, 45);
+//		System.out.println(multiple);
+		
+		
+		
+		
+		
+		
 
 	}
 
