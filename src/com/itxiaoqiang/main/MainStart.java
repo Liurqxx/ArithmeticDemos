@@ -37,8 +37,15 @@ public class MainStart {
         /**
          * 蒙特卡罗计算π
          */
-        double monte = MontePI.getMonte(500000000);
-        System.out.println("计算结果：PI="+monte);
+//        double monte = MontePI.getMonte(500000000);
+//        System.out.println("计算结果：PI=" + monte);
+
+        /**
+         * 折半查找
+         */
+        int[] arrs = {1, 3, 5, 7, 8, 11, 34, 58, 54, 89};
+        int numIndex = BinarySearch.getSearchFun(arrs, arrs.length, 34);
+        System.out.println(numIndex);
 
     }
 
