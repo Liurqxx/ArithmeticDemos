@@ -1,10 +1,6 @@
 package com.itxiaoqiang.main;
 
-import com.itxiaoqiang.arithmetic.CommonDivisor;
-import com.itxiaoqiang.arithmetic.CommonMultiple;
-import com.itxiaoqiang.arithmetic.RndColor;
-import com.itxiaoqiang.arithmetic.HanoiTower;
-import src.com.itxiaoqiang.arithmetic.MontePI;
+import com.itxiaoqiang.arithmetic.*;
 
 public class MainStart {
 
@@ -42,7 +38,7 @@ public class MainStart {
          * 蒙特卡罗计算π
          */
         double monte = MontePI.getMonte(500000000);
-        System.out.println(monte);
+        System.out.println("计算结果：PI="+monte);
 
     }
 
