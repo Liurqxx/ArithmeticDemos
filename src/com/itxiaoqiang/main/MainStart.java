@@ -43,9 +43,15 @@ public class MainStart {
         /**
          * ’€∞Î≤È’“
          */
-        int[] arrs = {1, 3, 5, 7, 8, 11, 34, 58, 54, 89};
-        int numIndex = BinarySearch.getSearchFun(arrs, arrs.length, 34);
-        System.out.println(numIndex);
+//        int[] arrs = {1, 3, 5, 7, 8, 11, 34, 58, 54, 89};
+//        int numIndex = BinarySearch.getSearchFun(arrs, arrs.length, 34);
+//        System.out.println(numIndex);
+
+        /**
+         * µ›πÈΩ◊≥À
+         */
+        Long pact = FactorialDemo.pact(10);
+        System.out.println(pact);
 
     }
 
