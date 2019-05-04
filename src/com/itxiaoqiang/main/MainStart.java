@@ -50,8 +50,14 @@ public class MainStart {
         /**
          * 递归阶乘
          */
-        Long pact = FactorialDemo.pact(10);
+        Long pact = FactorialDemo.pact(2);
         System.out.println(pact);
+
+        /**
+         * 判断平方回文数
+         */
+        boolean palindromic = PalindromicNumber.isPalindromic(181);
+        System.out.println(palindromic);
 
     }
 
