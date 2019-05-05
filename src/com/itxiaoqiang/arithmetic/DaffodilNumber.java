@@ -8,6 +8,10 @@ import java.util.List;
  */
 public class DaffodilNumber {
 
+    /**
+     * @param n：位数
+     * @return:包含水仙花数字的列表
+     */
     public static List isDaffodil(int n) {
         List<Long> daffodilList = new ArrayList<>();
         long k, start, end, temp, num, sum;
