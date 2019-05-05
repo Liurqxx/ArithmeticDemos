@@ -2,6 +2,8 @@ package com.itxiaoqiang.main;
 
 import com.itxiaoqiang.arithmetic.*;
 
+import java.util.List;
+
 public class MainStart {
 
     public static void main(String[] args) {
@@ -59,6 +61,12 @@ public class MainStart {
 //        boolean palindromic = PalindromicNumber.isPalindromic(181);
 //        System.out.println(palindromic);
 
+        /**
+         * 列举n位数的水仙花数
+         * return:arraylist
+         */
+        List daffodil = DaffodilNumber.isDaffodil(5);
+        System.out.println(daffodil);
     }
 
 }

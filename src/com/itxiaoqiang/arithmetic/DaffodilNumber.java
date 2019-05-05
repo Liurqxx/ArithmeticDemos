@@ -1,12 +1,15 @@
 package com.itxiaoqiang.arithmetic;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 水仙花数:153=1^3+5^3+3^5
  */
 public class DaffodilNumber {
 
-    public static boolean isDaffodil(int n) {
-
+    public static List isDaffodil(int n) {
+        List<Long> daffodilList = new ArrayList<>();
         long k, start, end, temp, num, sum;
         int l;
 
@@ -23,11 +26,11 @@ public class DaffodilNumber {
                 num = (num - temp) / 10;
             }
             if (sum == k) {
-                return true;
+                daffodilList.add(k);
             }
         }
 
-        return false;
+        return daffodilList;
 
     }
 
