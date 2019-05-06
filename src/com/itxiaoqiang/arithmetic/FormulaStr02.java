@@ -7,7 +7,7 @@ import java.util.Stack;
 /**
  * java计算字符串类型的公式
  */
-public class FormulaStr {
+public class FormulaStr02 {
 
     /**
      * 遍历集合，是数字则入栈，碰到操作符，将数字出站，判断操作符，并执行相应的操作
@@ -123,6 +123,14 @@ public class FormulaStr {
         System.out.println("中缀式是:" + suffix);
         return suffix;
     }
+
+    public static int getFormulaStr(String str) {
+
+        return FormulaStr02.getResult(FormulaStr02.getSuffix(FormulaStr02.getArrayList(str)));
+
+    }
+
+
 }
 
 

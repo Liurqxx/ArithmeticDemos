@@ -2,8 +2,6 @@ package com.itxiaoqiang.main;
 
 import com.itxiaoqiang.arithmetic.*;
 
-import java.util.List;
-
 public class MainStart {
 
     public static void main(String[] args) {
@@ -78,10 +76,16 @@ public class MainStart {
 //        }
 
         /**
-         * 字符串类型的公式计算
+         * 字符串类型的公式计算方式一
+         */
+//        Object formula = FormulaStr01.getFormula("4+8*4+9/3-2*3");
+//        System.out.println(formula.toString());
+
+        /**
+         * 字符串类型的公式计算方式二
          */
         String str = "(2+3)*3+9*6/8+(2+4/3+(2+6/5))";
-        System.out.println(FormulaStr.getResult(FormulaStr.getSuffix(FormulaStr.getArrayList(str))));
+        System.out.println(FormulaStr02.getFormulaStr(str));
     }
 
 
