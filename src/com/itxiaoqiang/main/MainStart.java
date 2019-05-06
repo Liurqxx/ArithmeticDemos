@@ -65,8 +65,18 @@ public class MainStart {
          * 列举n位数的水仙花数
          * return:arraylist
          */
-        List daffodil = DaffodilNumber.isDaffodil(5);
-        System.out.println(daffodil);
+//        List daffodil = DaffodilNumber.isDaffodil(5);
+//        System.out.println(daffodil);
+
+        /**
+         * 生成[0-1]之间均匀分布的随机数
+         */
+        double[] r = {5.0};
+        for (int i = 0; i < 10; i++) {
+            double randomNum = RandomNumber.getRandomNum(r);
+            System.out.println("randomNum:" + randomNum);
+        }
+
     }
 
 }
