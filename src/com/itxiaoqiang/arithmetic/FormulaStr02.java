@@ -57,7 +57,7 @@ public class FormulaStr02 {
      * @return
      */
     public static ArrayList<String> getArrayList(String str) {
-        ArrayList<String> stringList = new ArrayList<String>();//用于存储字符串集合
+        ArrayList<String> stringList = new ArrayList<>();//用于存储字符串集合
         for (char chs : str.toCharArray()) {
             stringList.add(chs + "");
         }
