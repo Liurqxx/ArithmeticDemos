@@ -71,12 +71,19 @@ public class MainStart {
         /**
          * 生成[0-1]之间均匀分布的随机数
          */
-        double[] r = {5.0};
-        for (int i = 0; i < 10; i++) {
-            double randomNum = RandomNumber.getRandomNum(r);
-            System.out.println("randomNum:" + randomNum);
-        }
+//        double[] r = {5.0};
+//        for (int i = 0; i < 10; i++) {
+//            double randomNum = RandomNumber.getRandomNum(r);
+//            System.out.println("randomNum:" + randomNum);
+//        }
 
+        /**
+         * 字符串类型的公式计算
+         */
+        String str = "(2+3)*3+9*6/8+(2+4/3+(2+6/5))";
+        System.out.println(FormulaStr.getResult(FormulaStr.getSuffix(FormulaStr.getArrayList(str))));
     }
 
+
 }
+
