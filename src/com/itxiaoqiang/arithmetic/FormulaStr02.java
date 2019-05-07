@@ -16,12 +16,13 @@ public class FormulaStr02 {
      * @return
      */
     public static int getResult(ArrayList<String> suffix) {
-        Stack<String> stack = new Stack<String>();
+        Stack<String> stack = new Stack<>();
         for (String element_suffix : suffix) {
             //如果是数字，入栈
             if (Character.isDigit(element_suffix.charAt(0))) {
                 stack.push(element_suffix);
             } else {
+//                System.out.println("----计算前：---" + stack.toString());
                 //如果遇到运算符，取出元素，并判断操作符，执行相应的计算
                 //自动拆箱：将包装类转换成基本类型
                 //自动装箱：将基本类型转换成包装类
@@ -45,6 +46,7 @@ public class FormulaStr02 {
                         break;
                 }
                 stack.push(result + "");
+//                System.out.println("计算后：" + stack.toString());
             }
         }
         return Integer.valueOf(stack.pop());
@@ -57,12 +59,30 @@ public class FormulaStr02 {
      * @return
      */
     public static ArrayList<String> getArrayList(String str) {
-        ArrayList<String> stringList = new ArrayList<>();//用于存储字符串集合
-        for (char chs : str.toCharArray()) {
-            stringList.add(chs + "");
+//        ArrayList<String> stringList = new ArrayList<>();//用于存储字符串集合
+//        for (char chs : str.toCharArray()) {
+//            stringList.add(chs + "");
+//        }
+        String s = "";
+        ArrayList<String> stringsList = new ArrayList<>();
+        for (char c : str.toCharArray()
+        ) {
+            if (!Character.isDigit(c)) {
+                if (s != "") {
+                    stringsList.add(s);
+                }
+                stringsList.add(c + "");
+                s = "";
+                continue;
+            } else {
+                s += c;//数字累加
+            }
         }
-        System.out.println("将字符串存入集合:" + stringList);
-        return stringList;
+        if (s != "") {
+            stringsList.add(s);
+        }
+        System.out.println("将字符串存入集合:" + stringsList);
+        return stringsList;
     }
 
     /**
@@ -84,12 +104,12 @@ public class FormulaStr02 {
     /**
      * 获得后缀表达式
      *
-     * @param infix 传入的中缀表达式的集合
+     * @param infix 传入的中缀表达式的集合  将字符串存入集合:[(, 2, +, 3, ), *, 3, +, 9, *, 6, /, 8, +, (, 2, +, 4, /, 3, +, (, 2, +, 6, /, 5, ), )]
      * @return
      */
     public static ArrayList<String> getSuffix(ArrayList<String> infix) {
-        ArrayList<String> suffix = new ArrayList<String>();//用于存储最后的后缀式
-        Stack<String> operator = new Stack<String>();//用于比较运算符优先级
+        ArrayList<String> suffix = new ArrayList<>();//用于存储最后的后缀式
+        Stack<String> operator = new Stack<>();//用于比较运算符优先级
         //第一步：分离数字和运算符
         for (String chs : infix)
             if (Character.isDigit(chs.charAt(0))) {//如果是数字，加入集合
@@ -103,9 +123,13 @@ public class FormulaStr02 {
                         break;
                     //右括号，出栈，直到左括号出栈
                     case ')':
-                        while (!"(".equals(operator.peek()))
+                        while (!"(".equals(operator.peek())) {
+//                            System.out.println("---operator----" + operator.toString());
                             suffix.add(operator.pop());
+//                            System.out.println("---suffix:--" + suffix);
+                        }
                         operator.pop();//左括号出栈
+//                        System.out.println("---operator----" + operator.toString());
                         break;
                     default:
                         //如果是运算符，先比较优先级，如果当前元素的优先级低于栈顶元素，则栈顶元素出栈，当前元素出栈
@@ -124,10 +148,88 @@ public class FormulaStr02 {
         return suffix;
     }
 
+    /**
+     * 方法入口
+     *
+     * @param str
+     * @return
+     */
     public static int getFormulaStr(String str) {
 
         return FormulaStr02.getResult(FormulaStr02.getSuffix(FormulaStr02.getArrayList(str)));
 
+    }
+
+    public static void main(String[] args) {
+
+//        Stack<String> stack = new Stack<>();
+//
+//        for (char c : "helloworld".toCharArray()
+//        ) {
+//            stack.push(c + "");
+//            System.out.println(c);
+//        }
+//        System.out.println(stack.toString());
+//        System.out.println(stack.size());
+//        for (int i = 0; i < 10; i++) {
+//            String pop = stack.pop();
+//            System.out.println(pop);
+//            String peek = stack.peek();
+//            System.out.println("---" + peek);
+//        }
+
+//        System.out.println(stack.toString());
+
+//        String str = "11122helloworld";
+//
+//        boolean digit = Character.isDigit(str.charAt(0));
+//        int type = Character.getType(str.charAt(1));
+//        System.out.println("type:" + type);
+//        System.out.println(digit);
+
+//        String str = "(22+3)*34+9*69/8+(2+4/3+(24+66/5))-34";
+//        String[] split = str.split("[\\+\\-\\*\\/\\(\\)]");
+//
+//        System.out.println(split.length);
+////
+//        for (int i = 0; i < split.length; i++) {
+//            if (split[i].isEmpty()) {
+//                System.out.println("isEmpty");
+//            }
+//
+//            System.out.println(split[i]);
+//        }
+
+//        String s = str.replaceAll("\\d", "");
+//        System.out.println(s);
+
+        /**
+         *
+         * string:(2+3)*34 ->string[]:{(,2,+3,),*,34}
+         *(22+3)*34+9*69/8+(2+4/3+(24+66/5))-34
+         */
+//        String s = "";
+//        List<String> stringsList = new ArrayList<>();
+//        for (char c : str.toCharArray()
+//        ) {
+//            if (!Character.isDigit(c)) {
+//                if (s != "") {
+//                    stringsList.add(s);
+//                }
+//                stringsList.add(c + "");
+//                s = "";
+//                continue;
+//            } else {
+//                s += c;//数字累加
+//            }
+//        }
+//        if (s != "") {
+//            stringsList.add(s);
+//        }
+//
+//        System.out.println(stringsList.toString());
+//
+//
     }
 
 
