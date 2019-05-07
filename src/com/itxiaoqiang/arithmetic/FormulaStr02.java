@@ -59,12 +59,8 @@ public class FormulaStr02 {
      * @return
      */
     public static ArrayList<String> getArrayList(String str) {
-//        ArrayList<String> stringList = new ArrayList<>();//用于存储字符串集合
-//        for (char chs : str.toCharArray()) {
-//            stringList.add(chs + "");
-//        }
         String s = "";
-        ArrayList<String> stringsList = new ArrayList<>();
+        ArrayList<String> stringsList = new ArrayList<>();//用于存储字符串集合
         for (char c : str.toCharArray()
         ) {
             if (!Character.isDigit(c)) {
