@@ -59,26 +59,37 @@ public class FormulaStr02 {
      * @return
      */
     public static ArrayList<String> getArrayList(String str) {
-        String s = "";
-        ArrayList<String> stringsList = new ArrayList<>();//用于存储字符串集合
-        for (char c : str.toCharArray()
-        ) {
-            if (!Character.isDigit(c)) {
-                if (s != "") {
-                    stringsList.add(s);
-                }
-                stringsList.add(c + "");
-                s = "";
-                continue;
-            } else {
-                s += c;//数字累加
-            }
+//        String s = "";
+//        ArrayList<String> stringsList = new ArrayList<>();//用于存储字符串集合
+//        for (char c : str.toCharArray()
+//        ) {
+//            if (!Character.isDigit(c)) {
+//                if (s != "") {
+//                    stringsList.add(s);
+//                }
+//                stringsList.add(c + "");
+//                s = "";
+//                continue;
+//            } else {
+//                s += c;//数字累加
+//            }
+//        }
+//        if (s != "") {
+//            stringsList.add(s);
+//        }
+
+        ArrayList<String> stringLists = new ArrayList<>();
+        String s = str.replaceAll("(\\d)+", " ");
+
+        String[] split = str.replaceAll("[\\+\\-\\*\\/\\(\\)]{1,}", " ").trim().split(" ");
+
+        int index = 0;
+        for (int i = 0; i < s.length(); i++) {
+            stringLists.add((s.charAt(i) + "").equals(" ") ? split[index++] + "" : s.charAt(i) + "");
         }
-        if (s != "") {
-            stringsList.add(s);
-        }
-        System.out.println("将字符串存入集合:" + stringsList);
-        return stringsList;
+
+        System.out.println("将字符串存入集合:" + stringLists);
+        return stringLists;
     }
 
     /**
@@ -100,7 +111,7 @@ public class FormulaStr02 {
     /**
      * 获得后缀表达式
      *
-     * @param infix 传入的中缀表达式的集合  将字符串存入集合:[(, 2, +, 3, ), *, 3, +, 9, *, 6, /, 8, +, (, 2, +, 4, /, 3, +, (, 2, +, 6, /, 5, ), )]
+     * @param infix 传入的中缀表达式的集合
      * @return
      */
     public static ArrayList<String> getSuffix(ArrayList<String> infix) {
@@ -155,6 +166,84 @@ public class FormulaStr02 {
         return FormulaStr02.getResult(FormulaStr02.getSuffix(FormulaStr02.getArrayList(str)));
 
     }
+
+    public static void main(String[] args) {
+
+        String str = "(45+89)*3221/89+(9-6)*8";
+        // [,(45,+]
+//        ArrayList<String> stringLists = new ArrayList<>();
+//        String s = str.replaceAll("(\\d)+", " ");
+//
+//        String[] split = str.replaceAll("[\\+\\-\\*\\/\\(\\)]{1,}", " ").trim().split(" ");
+//
+//        int index = 0;
+//        for (int i = 0; i < s.length(); i++) {
+//            stringLists.add((s.charAt(i) + "").equals(" ") ? split[index++] + "" : s.charAt(i) + "");
+//        }
+//        System.out.println(stringLists.toString());
+
+//        System.out.println(s.toString());
+//        String[] s = str.split("(\\d)+");
+//        System.out.println("替换数字后：" + s);
+
+//        String s1 = str.replaceAll("[\\+\\-\\*\\/\\(\\)]{1,}", ",");
+//        System.out.println(s1.toString());
+
+//        String[] split = str.split("[\\+\\-\\*\\/\\(\\)]");
+//        System.out.println(split.length);
+//        System.out.println("替换特殊字符后：" + s1);
+
+//        System.out.println("---1---" + split.length);
+//        System.out.println("---2--" + s.length);
+
+//        for (int i = 0; i < str.length(); i++) {
+//            stringLists.add(split[i].equals(" ") ? s[i] : split[i]);
+//        }
+//        for (int i = 0; i < split.length; i++) {
+
+//            if (split[i].equals("")) {
+//                System.out.println(s.charAt(index++) + "");
+//
+//            }
+//            System.out.println(split[i]);
+//            System.out.print("--" + s[i]);
+
+//            stringLists.add(split[i].equals("") ? s[index++] + "" : split[i]);
+
+//        }
+
+
+//        String[] split = s1.split(" ");
+//        for (String s : split
+//        ) {
+//            System.out.println(s);
+//        }
+
+//        String[] split = str.split("(\\d)+");
+//
+//        System.out.println("分割数字后：" + split.length);
+//
+//        for (String s : split
+//        ) {
+//            System.out.print(s);
+//        }
+
+
+//        int index = 0;
+//        ArrayList<String> stringLists = new ArrayList<>();
+//        for (char c : s1.toCharArray()) {
+//
+//            if (("" + c).isEmpty()) {
+//                stringLists.add(s.charAt(index) + "");
+//                index++;
+//                System.out.println(s.charAt(index) + "---" + index);
+//            } else
+//                stringLists.add(c + "");
+//        }
+//        System.out.println(stringLists.toString());
+
+    }
+
 
 }
 
