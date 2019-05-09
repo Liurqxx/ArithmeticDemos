@@ -1,8 +1,12 @@
 package com.itxiaoqiang.arithmetic;
 
+import jdk.nashorn.internal.runtime.regexp.joni.Regex;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * java计算字符串类型的公式
@@ -16,6 +20,9 @@ public class FormulaStr02 {
      * @return
      */
     public static int getResult(ArrayList<String> suffix) {
+        if (suffix.isEmpty()) {
+            return -1;
+        }
         Stack<String> stack = new Stack<>();
         for (String element_suffix : suffix) {
             //如果是数字，入栈
@@ -78,10 +85,24 @@ public class FormulaStr02 {
 //            stringsList.add(s);
 //        }
 
+        //去除空格
+        str = str.replaceAll(" ", "");
         ArrayList<String> stringLists = new ArrayList<>();
         String s = str.replaceAll("(\\d)+", " ");
 
         String[] split = str.replaceAll("[\\+\\-\\*\\/\\(\\)]{1,}", " ").trim().split(" ");
+
+        //校验正则
+        if (!isFourOperations(s, split, " ")) {
+            System.out.println("四则运算不合法..");
+            return new ArrayList<>();
+        }
+
+
+//        System.out.println("-----s----" + s.toString());
+//        for (int i = 0; i < split.length; i++) {
+//            System.out.print(split[i] + "||");
+//        }
 
         int index = 0;
         for (int i = 0; i < s.length(); i++) {
@@ -115,6 +136,10 @@ public class FormulaStr02 {
      * @return
      */
     public static ArrayList<String> getSuffix(ArrayList<String> infix) {
+        //检验四则运算是否正确
+        if (infix.isEmpty()) {
+            return infix;
+        }
         ArrayList<String> suffix = new ArrayList<>();//用于存储最后的后缀式
         Stack<String> operator = new Stack<>();//用于比较运算符优先级
         //第一步：分离数字和运算符
@@ -156,6 +181,20 @@ public class FormulaStr02 {
     }
 
     /**
+     * 检验四则运算是否正确
+     *
+     * @param str1 包含空格和特殊字符的字符串
+     * @param str2 只包含数字的字符串
+     * @param s    要包含的字符
+     * @return
+     */
+    public static Boolean isFourOperations(String str1, String[] str2, String s) {
+
+        return (str1.length() - (str1.replaceAll(s, "").toString().length())) / s.length() == str2.length;
+    }
+
+
+    /**
      * 方法入口
      *
      * @param str
@@ -168,7 +207,6 @@ public class FormulaStr02 {
     }
 
     public static void main(String[] args) {
-
     }
 
 

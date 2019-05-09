@@ -84,7 +84,7 @@ public class MainStart {
         /**
          * 字符串类型的公式计算方式二
          */
-        String str = "(2+35)*3+9*64/8+(2+41/3+(2+65/5))";
+        String str = "(2+35)*3+9*6jhu4/8+(2+41/3+(2+65/5))";
 //        String str = "54+8";
         System.out.println("要计算的公式：" + str);
 
