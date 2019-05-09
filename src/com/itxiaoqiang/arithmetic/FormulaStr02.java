@@ -5,8 +5,6 @@ import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * java计算字符串类型的公式
@@ -19,7 +17,7 @@ public class FormulaStr02 {
      * @param suffix
      * @return
      */
-    public static int getResult(ArrayList<String> suffix) {
+    public static double getResult(ArrayList<String> suffix) {
         if (suffix.isEmpty()) {
             return -1;
         }
@@ -33,21 +31,21 @@ public class FormulaStr02 {
                 //如果遇到运算符，取出元素，并判断操作符，执行相应的计算
                 //自动拆箱：将包装类转换成基本类型
                 //自动装箱：将基本类型转换成包装类
-                int ANumber = Integer.valueOf(stack.pop());//自动拆箱，取出第一个元素
-                int BNumber = Integer.valueOf(stack.pop());//自动拆箱，取出第二个元素
-                int result = 0;
+                double ANumber = Double.valueOf(stack.pop());//自动拆箱，取出第一个元素
+                double BNumber = Double.valueOf(stack.pop());//自动拆箱，取出第二个元素
+                double result = 0;
                 switch (element_suffix) {
                     case "+":
-                        result = ANumber + BNumber;
+                        result = BNumber + ANumber;
                         break;
                     case "-":
-                        result = ANumber - BNumber;
+                        result = BNumber - ANumber;
                         break;
                     case "*":
-                        result = ANumber * BNumber;
+                        result = BNumber * ANumber;
                         break;
                     case "/":
-                        result = ANumber / BNumber;
+                        result = BNumber / ANumber;
                         break;
                     default:
                         break;
@@ -56,7 +54,7 @@ public class FormulaStr02 {
 //                System.out.println("计算后：" + stack.toString());
             }
         }
-        return Integer.valueOf(stack.pop());
+        return Double.valueOf(stack.pop());
     }
 
     /**
@@ -88,7 +86,7 @@ public class FormulaStr02 {
         //去除空格
         str = str.replaceAll(" ", "");
         ArrayList<String> stringLists = new ArrayList<>();
-        String s = str.replaceAll("(\\d)+", " ");
+        String s = str.replaceAll("(^\\d+(\\.\\d*)?|\\.\\d+$)|(\\d)+", " ");
 
         String[] split = str.replaceAll("[\\+\\-\\*\\/\\(\\)]{1,}", " ").trim().split(" ");
 
@@ -97,12 +95,6 @@ public class FormulaStr02 {
             System.out.println("四则运算不合法..");
             return new ArrayList<>();
         }
-
-
-//        System.out.println("-----s----" + s.toString());
-//        for (int i = 0; i < split.length; i++) {
-//            System.out.print(split[i] + "||");
-//        }
 
         int index = 0;
         for (int i = 0; i < s.length(); i++) {
@@ -200,7 +192,7 @@ public class FormulaStr02 {
      * @param str
      * @return
      */
-    public static int getFormulaStr(String str) {
+    public static double getFormulaStr(String str) {
 
         return FormulaStr02.getResult(FormulaStr02.getSuffix(FormulaStr02.getArrayList(str)));
 
