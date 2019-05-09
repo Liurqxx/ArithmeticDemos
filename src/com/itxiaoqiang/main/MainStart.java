@@ -78,8 +78,8 @@ public class MainStart {
         /**
          * 字符串类型的公式计算方式一
          */
-        Object formula = FormulaStr01.getFormula("(2+35)*3+3*646/8+(2+41/3+(2+6775/5))");
-        System.out.println(formula.toString());
+//        Object formula = FormulaStr01.getFormula("(2+35)*3+3*646/8+(2+41/3+(2+6775/5))");
+//        System.out.println(formula.toString());
 
         /**
          * 字符串类型的公式计算方式二
