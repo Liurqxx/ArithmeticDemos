@@ -1,9 +1,7 @@
 package com.itxiaoqiang.arithmetic;
 
-import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
 /**
